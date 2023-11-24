@@ -1,6 +1,3 @@
-
-from array import *
-
 import re
 
 class arithmetic_arranger:
