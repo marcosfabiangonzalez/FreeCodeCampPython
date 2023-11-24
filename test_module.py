@@ -1,9 +1,16 @@
+import pytest
+
 from arithmetic_arranger import arithmetic_arranger
 
-def test_successful_no_result(mocker):
-    test_class = arithmetic_arranger()
-    operation = ["32+8"]
-    show_result = False
-    printer_calls = mocker.patch('builtins.print')
-    test_class.arithmetic_arranger(operation, show_result)
-    assert printer_calls.call_count == 5
+test_cases = [
+    pytest.param(
+        [['98 + 3g5', '3801 - 2', '45 + 43', '123 + 49']],
+        'Error: Numbers must only contain digits.',
+        'Expected calling "arithmetic_arranger()" with a problem that contains a letter character in the number to return "Error: Numbers must only contain digits."',
+        id='test_only_digits')
+]
+
+@pytest.mark.parametrize('arguments,expected_output,fail_message', test_cases)
+def test_successful_no_result(arguments, expected_output, fail_message):
+    result = arithmetic_arranger(*arguments)
+    assert result == expected_output, fail_message
