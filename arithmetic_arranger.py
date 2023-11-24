@@ -36,7 +36,6 @@ class arithmetic_arranger:
         print(self.str_op2)
         print(self.str_sep)
         print(self.str_ans)
-        print("Process Run.")
     
     def validate_digits(self, item: str) -> bool:
         operation = re.findall('\\d[+,-]\\d', item)
